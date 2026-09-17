@@ -5,7 +5,6 @@
  */
 package net.rabiesland.embeddedcomputer.embedded.block;
 
-import com.mojang.serialization.MapCodec;
 import dan200.computercraft.shared.computer.blocks.ComputerBlock;
 import dan200.computercraft.shared.computer.core.ComputerState;
 import dan200.computercraft.shared.util.BlockEntityHelpers;
@@ -44,11 +43,6 @@ public class EmbeddedComputerBlock<T extends EmbeddedComputerBlockEntity> extend
     public EmbeddedComputerBlock(Properties settings) {
         super(settings);
         registerDefaultState(defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH).setValue(powered,ComputerState.OFF));
-    }
-
-    @Override
-    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
-        return simpleCodec(EmbeddedComputerBlock::new);
     }
 
     private final BlockEntityTicker<T> ticker = (level, pos, state, computer) -> computer.serverTick();

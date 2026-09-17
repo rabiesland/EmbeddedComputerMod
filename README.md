@@ -13,12 +13,13 @@ The "Embedded Computer" mod is an addon for CC: Tweaked that adds the Embedded C
 (game version).(big update).(small update)
 
 
-- 1.20.1 is [0.X.X](https://github.com/WindClan/EmbeddedComputerMod/tree/1.20.1)
-- 1.21.1 is [1.X.X](https://github.com/WindClan/EmbeddedComputerMod/tree/1.21.1)
-- 1.21.7 is [2.X.X](https://github.com/WindClan/EmbeddedComputerMod/tree/1.21.7)
-- 1.21.11 is [3.X.X ](https://github.com/WindClan/EmbeddedComputerMod/tree/1.21.11)
-- 26.1 is [4.X.X](https://github.com/WindClan/EmbeddedComputerMod/tree/26.1)
-- 26.2 is 5.X.X (you are here)
+- 1.20.1 is [0.X.X](https://github.com/rabiesland/EmbeddedComputerMod/tree/1.20.1)
+- 1.21.1 is [1.X.X](https://github.com/rabiesland/EmbeddedComputerMod/tree/1.21.1)
+- 1.21.7 is [2.X.X](https://github.com/rabiesland/EmbeddedComputerMod/tree/1.21.7)
+- 1.21.11 is [3.X.X ](https://github.com/rabiesland/EmbeddedComputerMod/tree/1.21.11)
+- 26.1 is [4.X.X](https://github.com/rabiesland/EmbeddedComputerMod/tree/26.1)
+- 26.2 is [5.X.X](https://github.com/rabiesland/EmbeddedComputerMod/tree/26.2)
+- 26.3 is 6.X.X (you are here)
 
 ## Disclaimer
 

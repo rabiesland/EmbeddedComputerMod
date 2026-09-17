@@ -46,7 +46,7 @@ import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 public class registry {
-    public static Block EMBEDDED_COMPUTER = registerBlock("embedded_computer", EmbeddedComputerBlock::new, BlockBehaviour.Properties.of().pushReaction(PushReaction.IGNORE).forceSolidOn());
+    public static Block EMBEDDED_COMPUTER = registerBlock("embedded_computer", EmbeddedComputerBlock::new, BlockBehaviour.Properties.of().pushReaction(PushReaction.IMMOVEABLE).forceSolidOn());
     public static BlockEntityType<EmbeddedComputerBlockEntity> EMBEDDED_COMPUTER_ENTITY = Registry.register(
             BuiltInRegistries.BLOCK_ENTITY_TYPE,
             Identifier.fromNamespaceAndPath("embeddedcomputer", "embedded_computer_entity"),
@@ -54,11 +54,11 @@ public class registry {
     );
     public static Item EMBEDDED_COMPUTER_ITEM = registerItem("embedded_computer", ComputerBlockItem::new, new Item.Properties().fireResistant());
 
-    public static final Block HARD_DRIVE = registerBlock("hard_drive",HardDriveBlock::new,BlockBehaviour.Properties.of().pushReaction(PushReaction.IGNORE).forceSolidOn());
+    public static final Block HARD_DRIVE = registerBlock("hard_drive",HardDriveBlock::new,BlockBehaviour.Properties.of().pushReaction(PushReaction.IMMOVEABLE).forceSolidOn());
     public static final BlockEntityType HARD_DRIVE_ENTITY = Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE,Identifier.tryBuild("embeddedcomputer","hard_drive_entity"), FabricBlockEntityTypeBuilder.create(HardDriveBlockEntity::new,HARD_DRIVE).build(null));
     public static Item HARD_DRIVE_ITEM = registerItem("hard_drive",HardDriveItem::new,new Item.Properties().stacksTo(1));
 
-    public static Block SECURE_COMPUTER = registerBlock("secure_computer", SecureComputerBlock::new, BlockBehaviour.Properties.of().pushReaction(PushReaction.IGNORE).forceSolidOn());
+    public static Block SECURE_COMPUTER = registerBlock("secure_computer", SecureComputerBlock::new, BlockBehaviour.Properties.of().pushReaction(PushReaction.IMMOVEABLE).forceSolidOn());
     public static BlockEntityType<SecureComputerBlockEntity> SECURE_COMPUTER_ENTITY = Registry.register(
             BuiltInRegistries.BLOCK_ENTITY_TYPE,
             Identifier.fromNamespaceAndPath("embeddedcomputer", "secure_computer_entity"),

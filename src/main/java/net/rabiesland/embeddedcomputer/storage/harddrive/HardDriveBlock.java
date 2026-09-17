@@ -5,7 +5,6 @@
  */
 package net.rabiesland.embeddedcomputer.storage.harddrive;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.world.level.block.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -29,11 +28,6 @@ public class HardDriveBlock extends BaseEntityBlock implements EntityBlock {
     public HardDriveBlock(Properties settings) {
         super(settings);
         registerDefaultState(defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH));
-    }
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        return null;
     }
 
     @Override
