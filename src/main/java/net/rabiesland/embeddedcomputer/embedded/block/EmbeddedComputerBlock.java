@@ -9,7 +9,6 @@ import com.mojang.serialization.MapCodec;
 import dan200.computercraft.shared.computer.blocks.ComputerBlock;
 import dan200.computercraft.shared.computer.core.ComputerState;
 import dan200.computercraft.shared.util.BlockEntityHelpers;
-import net.minecraft.block.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
