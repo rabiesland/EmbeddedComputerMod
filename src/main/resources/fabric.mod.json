@@ -5,20 +5,21 @@
   "name": "Embedded Computer",
   "description": "Embedded Computer for CC",
   "authors": [
-    "average warrior cats fan / WindClan",
-    "Herr Katze"
+    "gh0stzones"
   ],
-  "contact": {},
+  "contact": {
+    "homepage": "https://rabiesland.net/project/embeddedcomputer"
+  },
   "accessWidener": "embeddedcomputer.classtweaker",
   "license": "MPL 2.0",
   "icon": "assets/embeddedcomputer/icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [
-      "org.windclan.embeddedcomputer.client.mainClient"
+      "net.rabiesland.embeddedcomputer.client.mainClient"
     ],
     "main": [
-      "org.windclan.embeddedcomputer.main"
+      "net.rabiesland.embeddedcomputer.main"
     ]
   },
   "mixins": [],
