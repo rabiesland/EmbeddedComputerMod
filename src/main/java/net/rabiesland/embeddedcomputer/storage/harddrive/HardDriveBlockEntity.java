@@ -9,13 +9,13 @@ import dan200.computercraft.api.ComputerCraftAPI;
 import dan200.computercraft.api.filesystem.WritableMount;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.component.ComponentMap;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.rabiesland.embeddedcomputer.registry;
 import org.jetbrains.annotations.Nullable;
 import net.rabiesland.embeddedcomputer.storage.ServerStorageConfig;
@@ -32,13 +32,13 @@ public class HardDriveBlockEntity extends BlockEntity  {
     public String uuid = "";
     public String mount;
 
-    public static void tick(World world1, BlockPos pos, BlockState state1, BlockEntity be) {}
+    public static void tick(Level world1, BlockPos pos, BlockState state1, BlockEntity be) {}
     public WritableMount makeMount() {
         if (uuid.isEmpty()) {
             uuid = UUID.randomUUID().toString();
-            markDirty();
+            setChanged();
         }
-        return ComputerCraftAPI.createSaveDirMount(world.getServer(), "hdd/" + uuid, ServerStorageConfig.HARD_DRIVE_STORAGE); // 25 Megabytes
+        return ComputerCraftAPI.createSaveDirMount(level.getServer(), "hdd/" + uuid, ServerStorageConfig.HARD_DRIVE_STORAGE); // 25 Megabytes
     }
     public boolean attach(IComputerAccess computer, @Nullable String str) {
         if (isNull(str)) {
@@ -59,39 +59,39 @@ public class HardDriveBlockEntity extends BlockEntity  {
         }
     }
     @Override
-    public void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+    public void saveAdditional(CompoundTag nbt, HolderLookup.Provider registryLookup) {
         nbt.putString("uuid", uuid);
-        super.writeNbt(nbt,registryLookup);
+        super.saveAdditional(nbt,registryLookup);
     }
 
     @Override
-    public void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        super.readNbt(nbt,registryLookup);
+    public void loadAdditional(CompoundTag nbt, HolderLookup.Provider registryLookup) {
+        super.loadAdditional(nbt,registryLookup);
         uuid = nbt.getString("uuid");
         if (uuid.isEmpty()) {
             uuid = UUID.randomUUID().toString();
-            markDirty();
+            setChanged();
         }
     }
 
     @Override
-    protected void readComponents(ComponentsAccess components) {
-        super.readComponents(components);
+    protected void applyImplicitComponents(DataComponentInput components) {
+        super.applyImplicitComponents(components);
         uuid = components.getOrDefault(registry.uuid,"");
         if (uuid.isEmpty()) {
             uuid = UUID.randomUUID().toString();
-            markDirty();
+            setChanged();
         }
     }
 
     @Override
-    protected void addComponents(ComponentMap.Builder componentMapBuilder) {
-        super.addComponents(componentMapBuilder);
-        componentMapBuilder.add(registry.uuid,this.uuid);
+    protected void collectImplicitComponents(DataComponentMap.Builder componentMapBuilder) {
+        super.collectImplicitComponents(componentMapBuilder);
+        componentMapBuilder.set(registry.uuid,this.uuid);
     }
 
     @Override
-    public void removeFromCopiedStackNbt(NbtCompound nbt) {
+    public void removeComponentsFromTag(CompoundTag nbt) {
         nbt.remove("uuid");
     }
     public IPeripheral peripheral() {

@@ -8,7 +8,7 @@ import net.rabiesland.embeddedcomputer.storage.MediaItem;
 import net.rabiesland.embeddedcomputer.storage.ServerStorageConfig;
 
 public class ZipDiskItem extends MediaItem {
-    public ZipDiskItem(Settings settings) {
+    public ZipDiskItem(Properties settings) {
         super(settings);
     }
     @Override

@@ -9,7 +9,7 @@ import net.rabiesland.embeddedcomputer.storage.MediaItem;
 import net.rabiesland.embeddedcomputer.storage.ServerStorageConfig;
 
 public class DebugMediaItem extends MediaItem {
-    public DebugMediaItem(Settings settings) {
+    public DebugMediaItem(Properties settings) {
         super(settings);
     }
     @Override

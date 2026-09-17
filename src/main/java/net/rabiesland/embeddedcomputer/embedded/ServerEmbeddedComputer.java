@@ -6,11 +6,11 @@
 package net.rabiesland.embeddedcomputer.embedded;
 
 import dan200.computercraft.shared.computer.core.ServerComputer;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 
 public class ServerEmbeddedComputer extends ServerComputer {
-    public ServerEmbeddedComputer(ServerWorld level, BlockPos position, Properties properties) {
+    public ServerEmbeddedComputer(ServerLevel level, BlockPos position, Properties properties) {
         super(level, position, properties);
     }
 }

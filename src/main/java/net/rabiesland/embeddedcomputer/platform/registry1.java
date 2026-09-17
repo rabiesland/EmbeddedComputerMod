@@ -7,30 +7,30 @@ package net.rabiesland.embeddedcomputer.platform;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.rabiesland.embeddedcomputer.registry;
 
 public class registry1 {
-    public static final ItemGroup EMBEDDED_COMPUTER_GROUP = FabricItemGroup.builder()
+    public static final CreativeModeTab EMBEDDED_COMPUTER_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(registry.EMBEDDED_COMPUTER))
-            .displayName(Text.translatable("itemGroup.embeddedcomputer"))
+            .title(Component.translatable("itemGroup.embeddedcomputer"))
             .build();
-    public static RegistryKey<ItemGroup> itemGroupKey = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.tryParse("embeddedcomputer", "item_group"));
+    public static ResourceKey<CreativeModeTab> itemGroupKey = ResourceKey.create(BuiltInRegistries.CREATIVE_MODE_TAB.key(), ResourceLocation.tryBuild("embeddedcomputer", "item_group"));
     public void registerItemGroups() {
-        Registry.register(Registries.ITEM_GROUP,itemGroupKey, EMBEDDED_COMPUTER_GROUP);
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB,itemGroupKey, EMBEDDED_COMPUTER_GROUP);
         ItemGroupEvents.modifyEntriesEvent(itemGroupKey).register(itemGroup -> {
-            itemGroup.add(registry.EMBEDDED_COMPUTER_ITEM);
-            itemGroup.add(registry.SECURE_COMPUTER_ITEM);
-            itemGroup.add(registry.HARD_DRIVE_ITEM);
-            itemGroup.add(registry.DEBUG_MEDIA_ITEM);
-            itemGroup.add(registry.ZIP_DISK_ITEM);
-            itemGroup.add(registry.FLASH_CARD_ITEM);
+            itemGroup.accept(registry.EMBEDDED_COMPUTER_ITEM);
+            itemGroup.accept(registry.SECURE_COMPUTER_ITEM);
+            itemGroup.accept(registry.HARD_DRIVE_ITEM);
+            itemGroup.accept(registry.DEBUG_MEDIA_ITEM);
+            itemGroup.accept(registry.ZIP_DISK_ITEM);
+            itemGroup.accept(registry.FLASH_CARD_ITEM);
         });
     }
 }

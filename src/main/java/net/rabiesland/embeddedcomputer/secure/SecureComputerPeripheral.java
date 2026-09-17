@@ -2,8 +2,8 @@ package net.rabiesland.embeddedcomputer.secure;
 
 import dan200.computercraft.api.peripheral.IPeripheral;
 import dan200.computercraft.shared.computer.blocks.AbstractComputerBlockEntity;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.util.math.Direction;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.rabiesland.embeddedcomputer.embedded.EmbeddedComputerPeripheral;
 import net.rabiesland.embeddedcomputer.secure.block.SecureComputerBlockEntity;
 

@@ -3,9 +3,9 @@ package net.rabiesland.embeddedcomputer.secure.block;
 import dan200.computercraft.shared.computer.core.ComputerFamily;
 import dan200.computercraft.shared.computer.core.ServerComputer;
 import dan200.computercraft.shared.computer.core.TerminalSize;
-import net.minecraft.block.BlockState;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.block.state.BlockState;
 import net.rabiesland.embeddedcomputer.embedded.ServerEmbeddedComputer;
 import net.rabiesland.embeddedcomputer.embedded.block.EmbeddedComputerBlockEntity;
 import net.rabiesland.embeddedcomputer.registry;
@@ -19,7 +19,7 @@ public class SecureComputerBlockEntity extends EmbeddedComputerBlockEntity {
     @Override
     protected ServerComputer createComputer(int id) {
         return new ServerEmbeddedComputer(
-                (ServerWorld) getWorld(), getPos(), //id, label,brain
+                (ServerLevel) getLevel(), getBlockPos(), //id, label,brain
                 ServerEmbeddedComputer.properties(id, ComputerFamily.ADVANCED)
                         .label(label)
                         .terminalSize(new TerminalSize(49,17))
@@ -30,7 +30,7 @@ public class SecureComputerBlockEntity extends EmbeddedComputerBlockEntity {
     protected boolean wasOn = false;
     @Override
     public void serverTick() {
-        if (isNull(getWorld()) || getWorld().isClient) {
+        if (isNull(getLevel()) || getLevel().isClientSide) {
             return; //no.
         }
         if (getComputerID() < 0) {
@@ -40,7 +40,7 @@ public class SecureComputerBlockEntity extends EmbeddedComputerBlockEntity {
         var currentlyOn = comp.isOn();
         if (currentlyOn != wasOn) {
             wasOn = currentlyOn;
-            markDirty();
+            setChanged();
         }
         if (!currentlyOn) {
             comp.turnOn();

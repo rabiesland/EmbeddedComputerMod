@@ -8,11 +8,11 @@ package net.rabiesland.embeddedcomputer.storage.harddrive;
 import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.entity.BlockEntity;
 
 public class HardDrivePeripheral implements IPeripheral {
     public HardDriveBlockEntity hdd;

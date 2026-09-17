@@ -11,9 +11,9 @@ import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
 import dan200.computercraft.shared.computer.blocks.AbstractComputerBlockEntity;
 import dan200.computercraft.shared.computer.core.ServerComputer;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.rabiesland.embeddedcomputer.embedded.block.EmbeddedComputerBlockEntity;
 import net.rabiesland.embeddedcomputer.secure.HashUtil;
 

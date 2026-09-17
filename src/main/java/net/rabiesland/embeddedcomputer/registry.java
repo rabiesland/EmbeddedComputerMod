@@ -8,20 +8,16 @@ package net.rabiesland.embeddedcomputer;
 import com.mojang.serialization.Codec;
 import dan200.computercraft.api.component.ComputerComponent;
 import dan200.computercraft.api.peripheral.PeripheralLookup;
-
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.component.ComponentType;
-import net.minecraft.item.Item;
-
-import net.minecraft.network.codec.PacketCodecs;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-
-import net.minecraft.util.Identifier;
-
+import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.PushReaction;
 import net.rabiesland.embeddedcomputer.embedded.EmbeddedComputerPeripheral;
 import net.rabiesland.embeddedcomputer.embedded.IEmbeddedComputer;
 import net.rabiesland.embeddedcomputer.embedded.block.EmbeddedComputerBlock;
@@ -43,67 +39,67 @@ import java.util.function.UnaryOperator;
 
 public class registry {
     public static Block EMBEDDED_COMPUTER = Registry.register(
-            Registries.BLOCK,
-            Identifier.of("embeddedcomputer","embedded_computer"),
-            new EmbeddedComputerBlock(AbstractBlock.Settings.create().pistonBehavior(PistonBehavior.IGNORE).solid())
+            BuiltInRegistries.BLOCK,
+            ResourceLocation.fromNamespaceAndPath("embeddedcomputer","embedded_computer"),
+            new EmbeddedComputerBlock(BlockBehaviour.Properties.of().pushReaction(PushReaction.IGNORE).forceSolidOn())
     );
     public static BlockEntityType<EmbeddedComputerBlockEntity> EMBEDDED_COMPUTER_ENTITY = Registry.register(
-            Registries.BLOCK_ENTITY_TYPE,
-            Identifier.of("embeddedcomputer", "embedded_computer_entity"),
-            BlockEntityType.Builder.create(EmbeddedComputerBlockEntity::new, EMBEDDED_COMPUTER).build(null)
+            BuiltInRegistries.BLOCK_ENTITY_TYPE,
+            ResourceLocation.fromNamespaceAndPath("embeddedcomputer", "embedded_computer_entity"),
+            BlockEntityType.Builder.of(EmbeddedComputerBlockEntity::new, EMBEDDED_COMPUTER).build(null)
     );
     public static Item EMBEDDED_COMPUTER_ITEM = Registry.register(
-            Registries.ITEM,
-            Identifier.of("embeddedcomputer", "embedded_computer"),
+            BuiltInRegistries.ITEM,
+            ResourceLocation.fromNamespaceAndPath("embeddedcomputer", "embedded_computer"),
             new ComputerBlockItem(EMBEDDED_COMPUTER)
     );
 
     public static final Block HARD_DRIVE = Registry.register(
-            Registries.BLOCK,
-            Identifier.of("embeddedcomputer","hard_drive"),
-            new HardDriveBlock(AbstractBlock.Settings.create().pistonBehavior(PistonBehavior.IGNORE).solid())
+            BuiltInRegistries.BLOCK,
+            ResourceLocation.fromNamespaceAndPath("embeddedcomputer","hard_drive"),
+            new HardDriveBlock(BlockBehaviour.Properties.of().pushReaction(PushReaction.IGNORE).forceSolidOn())
     );
-    public static final BlockEntityType HARD_DRIVE_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE,Identifier.tryParse("embeddedcomputer","hard_drive_entity"), BlockEntityType.Builder.create(HardDriveBlockEntity::new,HARD_DRIVE).build(null));
+    public static final BlockEntityType HARD_DRIVE_ENTITY = Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE,ResourceLocation.tryBuild("embeddedcomputer","hard_drive_entity"), BlockEntityType.Builder.of(HardDriveBlockEntity::new,HARD_DRIVE).build(null));
     public static Item HARD_DRIVE_ITEM = Registry.register(
-            Registries.ITEM,
-            Identifier.of("embeddedcomputer", "hard_drive"),
-            new HardDriveItem(HARD_DRIVE, new Item.Settings().maxCount(1))
+            BuiltInRegistries.ITEM,
+            ResourceLocation.fromNamespaceAndPath("embeddedcomputer", "hard_drive"),
+            new HardDriveItem(HARD_DRIVE, new Item.Properties().stacksTo(1))
     );
 
     public static Block SECURE_COMPUTER = Registry.register(
-            Registries.BLOCK,
-            Identifier.of("embeddedcomputer","secure_computer"),
-            new SecureComputerBlock<>(AbstractBlock.Settings.create().pistonBehavior(PistonBehavior.IGNORE).solid())
+            BuiltInRegistries.BLOCK,
+            ResourceLocation.fromNamespaceAndPath("embeddedcomputer","secure_computer"),
+            new SecureComputerBlock<>(BlockBehaviour.Properties.of().pushReaction(PushReaction.IGNORE).forceSolidOn())
     );
     public static BlockEntityType<SecureComputerBlockEntity> SECURE_COMPUTER_ENTITY = Registry.register(
-            Registries.BLOCK_ENTITY_TYPE,
-            Identifier.of("embeddedcomputer", "secure_computer_entity"),
-            BlockEntityType.Builder.create(SecureComputerBlockEntity::new, SECURE_COMPUTER).build(null)
+            BuiltInRegistries.BLOCK_ENTITY_TYPE,
+            ResourceLocation.fromNamespaceAndPath("embeddedcomputer", "secure_computer_entity"),
+            BlockEntityType.Builder.of(SecureComputerBlockEntity::new, SECURE_COMPUTER).build(null)
     );
     public static Item SECURE_COMPUTER_ITEM = Registry.register(
-            Registries.ITEM,
-            Identifier.of("embeddedcomputer", "secure_computer"),
+            BuiltInRegistries.ITEM,
+            ResourceLocation.fromNamespaceAndPath("embeddedcomputer", "secure_computer"),
             new ComputerBlockItem(SECURE_COMPUTER)
     );
 
-    public static final Item DEBUG_MEDIA_ITEM = Registry.register(Registries.ITEM, Identifier.tryParse("embeddedcomputer", "debug_rock"), new DebugMediaItem(new Item.Settings()));
-    public static final Item ZIP_DISK_ITEM = Registry.register(Registries.ITEM, Identifier.tryParse("embeddedcomputer", "zip_disk"), new ZipDiskItem(new Item.Settings()));
-    public static final Item FLASH_CARD_ITEM = Registry.register(Registries.ITEM, Identifier.tryParse("embeddedcomputer", "flash_card"), new FlashCardItem(new Item.Settings()));
+    public static final Item DEBUG_MEDIA_ITEM = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.tryBuild("embeddedcomputer", "debug_rock"), new DebugMediaItem(new Item.Properties()));
+    public static final Item ZIP_DISK_ITEM = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.tryBuild("embeddedcomputer", "zip_disk"), new ZipDiskItem(new Item.Properties()));
+    public static final Item FLASH_CARD_ITEM = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.tryBuild("embeddedcomputer", "flash_card"), new FlashCardItem(new Item.Properties()));
 
     public static final ComputerComponent<IEmbeddedComputer> EMBEDDED_COMPONENT = ComputerComponent.create("embeddedcomputer", "embedded");
     public static final ComputerComponent<IEmbeddedComputer> SECURE_COMPONENT = ComputerComponent.create("embeddedcomputer","secure");
 
 
-    public static final ComponentType<Integer> id = register("id", builder -> builder
-            .codec(Codec.INT)
-            .packetCodec(PacketCodecs.INTEGER));
+    public static final DataComponentType<Integer> id = register("id", builder -> builder
+            .persistent(Codec.INT)
+            .networkSynchronized(ByteBufCodecs.INT));
 
-    public static final ComponentType<String> uuid = register("uuid", builder -> builder
-            .codec(Codec.STRING)
-            .packetCodec(PacketCodecs.STRING));
+    public static final DataComponentType<String> uuid = register("uuid", builder -> builder
+            .persistent(Codec.STRING)
+            .networkSynchronized(ByteBufCodecs.STRING_UTF8));
 
-    public static <T> ComponentType<T> register(String path, UnaryOperator<ComponentType.Builder<T>> builderOperator) {
-        return Registry.register(Registries.DATA_COMPONENT_TYPE, Identifier.of("embeddedcomputer", path), builderOperator.apply(ComponentType.builder()).build());
+    public static <T> DataComponentType<T> register(String path, UnaryOperator<DataComponentType.Builder<T>> builderOperator) {
+        return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, ResourceLocation.fromNamespaceAndPath("embeddedcomputer", path), builderOperator.apply(DataComponentType.builder()).build());
     }
 
     public void registerPeripherals() {

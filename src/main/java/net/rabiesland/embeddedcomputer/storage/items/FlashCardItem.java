@@ -9,7 +9,7 @@ import net.rabiesland.embeddedcomputer.storage.MediaItem;
 import net.rabiesland.embeddedcomputer.storage.ServerStorageConfig;
 
 public class FlashCardItem extends MediaItem {
-    public FlashCardItem(Settings settings) {
+    public FlashCardItem(Properties settings) {
         super(settings);
     }
     @Override

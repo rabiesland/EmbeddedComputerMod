@@ -7,19 +7,18 @@ package net.rabiesland.embeddedcomputer.embedded.item;
 
 import dan200.computercraft.shared.ModRegistry;
 import dan200.computercraft.shared.util.NonNegativeId;
-import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
-
 import java.util.List;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.block.Block;
 
 public class ComputerBlockItem extends BlockItem {
     public ComputerBlockItem(Block block) {
-        super(block, new Item.Settings().fireproof());
+        super(block, new Item.Properties().fireResistant());
     }
     public ItemStack newComputerItem(int id) {
         var stack = new ItemStack(this);
@@ -27,10 +26,10 @@ public class ComputerBlockItem extends BlockItem {
         return stack;
     }
     @Override
-    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag options) {
         NonNegativeId computerId = stack.get(ModRegistry.DataComponents.COMPUTER_ID.get());
         if (computerId == null) return;
         if (computerId.id() < 0) return;
-        tooltip.add(Text.literal("Computer: "+computerId.id()).formatted(Formatting.DARK_GRAY));
+        tooltip.add(Component.literal("Computer: "+computerId.id()).withStyle(ChatFormatting.DARK_GRAY));
     }
 }
