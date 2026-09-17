@@ -14,16 +14,17 @@ The "Embedded Computer" mod is an addon for CC: Tweaked that adds the Embedded C
 
 
 - 1.20.1 is [0.X.X](https://github.com/WindClan/EmbeddedComputerMod/tree/1.20.1)
-- 1.21.1 is 1.X.X (you are here)
+- 1.21.1 is [1.X.X](https://github.com/WindClan/EmbeddedComputerMod/tree/1.21.1) (you are here)
+- 26.2 is 5.X.X 
 
 ## Disclaimer
 
-PLEASE DO NOT USE ACTUAL PASSWORDS TO LOCK EMBEDDED COMPUTERS!!! They aren't hashed since setPassword is implemented in Lua and I didn't want to add a random hash lib to rom!!! If you want a secure lock code thats secure you should write a 2kb arbitrary string to `/.LOCKED`
+PLEASE DO NOT USE ACTUAL PASSWORDS TO LOCK EMBEDDED COMPUTERS!!!
 
-If you use an actual password (even if it was hashed) the server owner could add something to intercept and steal your password! Don't use an actual password you use for other things!!!!
+If you use an actual password the server owner could add something to intercept and steal your password! Don't use an actual password you use for other things!!!!
 
 ## License
 
-All versions prior to [v0.2.2 (82b367be5ee7d6888882f9b947e964fa6b011fbc)](https://github.com/WindClan/EmbeddedComputerMod/commit/82b367be5ee7d6888882f9b947e964fa6b011fbc) are under the MIT license
+All versions [v0.2.2 and prior (82b367be5ee7d6888882f9b947e964fa6b011fbc)](https://github.com/WindClan/EmbeddedComputerMod/commit/82b367be5ee7d6888882f9b947e964fa6b011fbc) are under the MIT license
 
 With permission from the other contributor Herr Katze, all versions past that are licensed as MPL 2.0
