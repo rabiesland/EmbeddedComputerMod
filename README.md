@@ -13,14 +13,18 @@ The "Embedded Computer" mod is an addon for CC: Tweaked that adds the Embedded C
 (game version).(big update).(small update)
 
 
-- 1.20.1 is 0.X.X (you are here)
-- 1.21.1 is 1.X.X (latest, no dedicated branch atm)
+- 1.20.1 is [0.X.X](https://github.com/WindClan/EmbeddedComputerMod/tree/1.20.1) (you are here)
+- 1.21.1 is [1.X.X](https://github.com/WindClan/EmbeddedComputerMod/tree/1.21.1)
+- 1.21.7 is [2.X.X](https://github.com/WindClan/EmbeddedComputerMod/tree/1.21.7)
+- 1.21.11 is [3.X.X ](https://github.com/WindClan/EmbeddedComputerMod/tree/1.21.11)
+- 26.1 is [4.X.X](https://github.com/WindClan/EmbeddedComputerMod/tree/26.1)
+- 26.2 is 5.X.X 
 
 ## Disclaimer
 
-PLEASE DO NOT USE ACTUAL PASSWORDS TO LOCK EMBEDDED COMPUTERS!!! 
+PLEASE DO NOT USE ACTUAL PASSWORDS TO LOCK EMBEDDED COMPUTERS!!!
 
-Since 1.1.0/0.4.0 they are hashed but if you use an actual password (even if it was hashed) the server owner could add something to intercept and steal your password! Don't use an actual password you use for other things!!!!
+If you use an actual password the server owner could add something to intercept and steal your password! Don't use an actual password you use for other things!!!!
 
 ## License
 
